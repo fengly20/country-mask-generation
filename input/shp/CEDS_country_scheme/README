@@ -1,0 +1,10 @@
+README
+
+This folder contains the input world country boundary shapefile for CEDS country mask generation. 
+
+The shapefile is manually created mainly based on GPW v3 ntblnds.shp with a small portion mixed using gdam v2.8 country boundary shapefile to provide boundary information of some newly assembled/dissolved countries/regions. 
+
+The complete country list can be found in country_list_and_notes.xlsx. 
+
+ 
+

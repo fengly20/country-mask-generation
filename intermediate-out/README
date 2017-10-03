@@ -1,0 +1,5 @@
+README
+
+This folder contains intermediate output files. Some times the final output is the same as intermediate output files and the only thing needed is to copy the files from intermediate output folder to final out folder, though there would be a duplication of files. 
+ 
+
