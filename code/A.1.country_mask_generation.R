@@ -11,7 +11,7 @@ source( './code/common/mask_functions.R' )
 # ----------------------------------------------------
 # 0. basic settings
 
-grid_resolution <- 0.5
+grid_resolution <- 0.1
 mask_out_dir_name <- paste0( paste0( 'mask_out_', gsub( '.', '', grid_resolution, fixed = T ) ) )
 mask_out <- paste0( './intermediate-out/', mask_out_dir_name )
 if( !dir.exists( mask_out ) ) { 
@@ -56,15 +56,15 @@ locationIndexGeneration <- function( shp, grid_res ) {
     return( max_bounding ) 
   }
   
-  xmin_boundings <- unlist( lapply( bbox_df[ , 'xmin' ], boundingMin, grid_res ) )
-  ymin_boundings <- unlist( lapply( bbox_df[ , 'ymin' ], boundingMin, grid_res ) )
-  xmax_boundings <- unlist( lapply( bbox_df[ , 'xmax' ], boundingMax, grid_res ) )
-  ymax_boundings <- unlist( lapply( bbox_df[ , 'ymax' ], boundingMax, grid_res ) )
+  xmin_boundings <- round( unlist( lapply( bbox_df[ , 'xmin' ], boundingMin, grid_res ) ), 2 )
+  ymin_boundings <- round( unlist( lapply( bbox_df[ , 'ymin' ], boundingMin, grid_res ) ), 2 )
+  xmax_boundings <- round( unlist( lapply( bbox_df[ , 'xmax' ], boundingMax, grid_res ) ), 2 )
+  ymax_boundings <- round( unlist( lapply( bbox_df[ , 'ymax' ], boundingMax, grid_res ) ), 2 )
   
-  xmin_bounding_lut <- seq( -180, ( 180 - grid_res ), grid_res )
-  xmax_bounding_lut <- seq( ( -180 + grid_res ), 180, grid_res )  
-  ymin_bounding_lut <- seq( ( 90 - grid_res ) , -90, -grid_res )
-  ymax_bounding_lut <- seq( 90, ( -90 + grid_res ), -grid_res )
+  xmin_bounding_lut <- round( seq( -180, ( 180 - grid_res ), grid_res ), 2 )
+  xmax_bounding_lut <- round( seq( ( -180 + grid_res ), 180, grid_res ), 2 ) 
+  ymin_bounding_lut <- round( seq( ( 90 - grid_res ) , -90, -grid_res ), 2 )
+  ymax_bounding_lut <- round( seq( 90, ( -90 + grid_res ), -grid_res ), 2 )
   
   start_row <- unlist( lapply( ymax_boundings, function( ymax_bounding ) { 
     which( ymax_bounding_lut %in% ymax_bounding )
