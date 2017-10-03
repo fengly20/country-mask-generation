@@ -6,7 +6,6 @@ library( 'geosphere' )
 library( 'maptools' )
 library( 'plyr' )
 
-setwd( 'c:/Users/feng999/Documents/country-mask-generation' ) 
 source( './code/common/mask_functions.R' )
 
 # ----------------------------------------------------
